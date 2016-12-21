@@ -1,7 +1,7 @@
 <?php
 /**
  * Laravel 4 - Persistent Settings
- * 
+ *
  * @author   Andreas Lutro <anlutro@gmail.com>
  * @license  http://opensource.org/licenses/MIT
  * @package  l4-settings
@@ -36,7 +36,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
 					$app->make('anlutro\LaravelSettings\SettingStore')->save();
 				});
 			}
-			
+
 			/**
 			 * Construct the actual manager.
 			 */
@@ -49,7 +49,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
 		});
 
 		if (version_compare(Application::VERSION, '5.0', '>=')) {
-			$this->mergeConfigFrom(__DIR__ . '/config/config.php', 'settings');
+			$this->mergeConfigFrom(__DIR__ . '/config/config.php', 'anlutro-settings');
 		}
 	}
 
@@ -60,7 +60,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
 	{
 		if (version_compare(Application::VERSION, '5.0', '>=')) {
 			$this->publishes([
-				__DIR__.'/config/config.php' => config_path('settings.php')
+				__DIR__.'/config/config.php' => config_path('anlutro-settings.php')
 			], 'config');
 			$this->publishes([
 				__DIR__.'/migrations' => database_path('migrations')

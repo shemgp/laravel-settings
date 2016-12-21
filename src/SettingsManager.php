@@ -1,7 +1,7 @@
 <?php
 /**
  * Laravel 4 - Persistent Settings
- * 
+ *
  * @author   Andreas Lutro <anlutro@gmail.com>
  * @license  http://opensource.org/licenses/MIT
  * @package  l4-settings
@@ -48,7 +48,7 @@ class SettingsManager extends Manager
 	protected function getConfig($key)
 	{
 		if (version_compare(Application::VERSION, '5.0', '>=')) {
-			$key = str_replace('anlutro/l4-settings::', 'settings.', $key);
+			$key = str_replace('anlutro/l4-settings::', 'anlutro-settings.', $key);
 		}
 
 		return $this->app['config']->get($key);
