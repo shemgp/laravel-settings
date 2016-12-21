@@ -1,7 +1,7 @@
 <?php
 /**
  * Laravel 4 - Persistent Settings
- * 
+ *
  * @author   Andreas Lutro <anlutro@gmail.com>
  * @license  http://opensource.org/licenses/MIT
  * @package  l4-settings
@@ -44,7 +44,9 @@ abstract class SettingStore
 	{
 		$this->checkLoaded();
 
-		return ArrayUtil::get($this->data, $key, $default);
+		$result = ArrayUtil::get($this->data, $key, $default);
+		if ($result == null)
+		return config($key);
 	}
 
 	/**
@@ -71,7 +73,7 @@ abstract class SettingStore
 	{
 		$this->checkLoaded();
 		$this->unsaved = true;
-		
+
 		if (is_array($key)) {
 			foreach ($key as $k => $v) {
 				ArrayUtil::set($this->data, $k, $v);
